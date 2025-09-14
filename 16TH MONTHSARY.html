@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>16th Monthsary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #1c1c1e;   /* space grey tones */
+      --bg2: #2c2c2e;
+      --card: rgba(255,255,255,0.06);
+      --accent: #ff9ad1;
+      --text: #ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,-apple-system,"Helvetica Neue",Arial;color:var(--text);}
+    body{
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+
+    .card{
+      width:100%;max-width:820px;background:rgba(255,255,255,0.04);
+      border-radius:18px;padding:36px 32px;box-shadow:0 10px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.08);
+    }
+
+    header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#3a3a3c,#48484a);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-family:"Great Vibes",serif;font-size:28px;
+    }
+    h1{margin:0;font-family:"Great Vibes",serif;font-size:40px;color:var(--text)}
+    p.lead{margin:0;opacity:0.85;font-size:14px;color:var(--text)}
+
+    .message{
+      margin-top:18px;padding:18px 20px;border-radius:12px;background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.05);line-height:1.7;color:var(--text);font-size:16px;
+    }
+
+    .signature{margin-top:18px;font-style:italic;color:var(--text);text-align:right;font-weight:600}
+
+    .controls{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .btn{
+      background:transparent;border:1px solid rgba(255,255,255,0.2);padding:10px 14px;border-radius:10px;color:var(--text);
+      cursor:pointer;font-weight:600;font-size:14px;
+    }
+    .btn.primary{
+      background:linear-gradient(90deg,#ff6fb8,#ffb3d8);color:#2c2c2e;border:0;
+    }
+
+    footer{margin-top:22px;text-align:center;color:rgba(255,255,255,0.6);font-size:13px}
+
+    @media (max-width:520px){
+      .card{padding:22px}
+      h1{font-size:32px}
+      .message{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <header>
+      
+      <div>
+        <h1 id="title">Happy 16th Monthsary, Babi!</h1>
+      </div>
+    </header>
+
+    <article class="message" id="messageContent">
+      <p><strong>Hi Babi,</strong></p>
+
+      <p>Happy 16th monthsary! I know we’ve come a long way to reach this point, and I just want you to know that with every day that passes, you are always in my heart. Sa bawat gabing hindi kita kasama, ikaw ang laman ng isip ko. And every moment I get to be with you, I feel whole, free, and truly happy.</p>
+
+      <p>Thank you for your never-ending patience and love, even in the times when all I could offer was my heart. Mahal na mahal kita, Babi, and I promise—before God and with all my being—that my love for you will remain true and strong, for as long as I live. i pray that God protect this relationship, and  time keeps  our bond stronger</p>
+
+      <p> sana na gustuhan motong  simpleng website na ginawa ko for you. </p>
+
+      <p>Happy 16th monthsary, my love, my Babi. 💖</p>
+
+    </article>
+
+    <div class="controls">
+      <button class="btn primary" id="printBtn">Print</button>
+      <button class="btn" id="downloadBtn">Download message (.txt)</button>
+      <button class="btn" id="copyBtn">Copy to clipboard</button>
+    </div>
+
+    <footer>Made with love ❤️ — open this file in any browser to view or print.</footer>
+  </main>
+
+  <script>
+    const printBtn = document.getElementById('printBtn')
+    const downloadBtn = document.getElementById('downloadBtn')
+    const copyBtn = document.getElementById('copyBtn')
+    const messageContent = document.getElementById('messageContent').innerText.trim()
+
+    printBtn.addEventListener('click', ()=> window.print())
+
+    downloadBtn.addEventListener('click', ()=>{
+      const blob = new Blob([messageContent], {type: 'text/plain;charset=utf-8'})
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'Happy-16th-Monthsary-Babi.txt'
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+    })
+
+    copyBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(messageContent)
+        copyBtn.textContent = 'Copied ✓'
+        setTimeout(()=> copyBtn.textContent = 'Copy to clipboard', 1800)
+      }catch(e){
+        alert('Sorry — clipboard access denied.')
+      }
+    })
+  </script>
+</body>
+</html>
